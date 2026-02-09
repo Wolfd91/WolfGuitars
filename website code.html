@@ -1,0 +1,1407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Electric Guitars - Handcrafted Excellence</title>
+    <link rel="icon" type="image/png" href="Foto's/Wolf Guitars logo black transparant.png">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Crimson+Pro:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --charcoal: #1a1a1a;
+            --off-white: #f5f1e8;
+            --copper: #b87333;
+            --deep-red: #8b1e1e;
+            --warm-gray: #4a4a42;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Pro', serif;
+            background-color: var(--charcoal);
+            color: var(--off-white);
+            overflow-x: hidden;
+        }
+
+        body.modal-open {
+            overflow: hidden;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--charcoal) 0%, #2d2d2d 100%);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 2px,
+                    rgba(255, 255, 255, 0.015) 2px,
+                    rgba(255, 255, 255, 0.015) 4px
+                );
+            pointer-events: none;
+            opacity: 0;
+            animation: fadeInTexture 2s ease-in forwards;
+        }
+
+        @keyframes fadeInTexture {
+            to { opacity: 1; }
+        }
+
+        .hero-content {
+            text-align: center;
+            z-index: 2;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1.2s ease-out 0.3s forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(3rem, 12vw, 9rem);
+            letter-spacing: 0.08em;
+            line-height: 0.9;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--copper) 0%, #d4a574 50%, var(--copper) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 4px 20px rgba(184, 115, 51, 0.3);
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.2rem, 3vw, 2rem);
+            font-weight: 300;
+            letter-spacing: 0.15em;
+            margin-bottom: 3rem;
+            opacity: 0;
+            animation: fadeIn 1s ease-out 0.8s forwards;
+        }
+
+        .hero-logo {
+            height: 170px;
+            width: auto;
+            filter: invert(1) brightness(0.9);
+            opacity: 0;
+            animation: fadeIn 1s ease-out 1.2s forwards;
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 3rem;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            animation: fadeIn 1s ease-out 1.5s forwards, bounce 2s ease-in-out 2.5s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(10px); }
+        }
+
+        .scroll-indicator::before {
+            content: '';
+            display: block;
+            width: 2px;
+            height: 40px;
+            background: linear-gradient(to bottom, transparent, var(--copper));
+            margin: 0 auto 10px;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 2rem 4rem;
+            z-index: 100;
+            background: linear-gradient(to bottom, rgba(26, 26, 26, 0.95), transparent);
+            opacity: 0;
+            animation: fadeIn 1s ease-out 0.5s forwards;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            height: 55px;
+            width: auto;
+            filter: invert(1) brightness(0.9);
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: flex-end;
+            gap: 3rem;
+        }
+
+        nav a {
+            color: var(--off-white);
+            text-decoration: none;
+            font-size: 1.1rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            font-weight: 300;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--copper);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--copper);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Process Section */
+        .process {
+            padding: 8rem 4rem;
+            background: var(--charcoal);
+            position: relative;
+        }
+
+        .process::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 1px;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent, var(--warm-gray), transparent);
+        }
+
+        .section-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(3rem, 8vw, 6rem);
+            letter-spacing: 0.08em;
+            text-align: center;
+            margin-bottom: 5rem;
+            color: var(--copper);
+        }
+
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 4rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .process-step {
+            padding: 3rem;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(184, 115, 51, 0.2);
+            position: relative;
+            transition: all 0.4s ease;
+        }
+
+        .process-step::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(184, 115, 51, 0.1) 0%, transparent 100%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .process-step:hover {
+            transform: translateY(-10px);
+            border-color: var(--copper);
+        }
+
+        .process-step:hover::before {
+            opacity: 1;
+        }
+
+        .step-number {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 4rem;
+            color: var(--copper);
+            opacity: 0.3;
+            line-height: 1;
+            margin-bottom: 1rem;
+        }
+
+        .step-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2rem;
+            letter-spacing: 0.05em;
+            margin-bottom: 1rem;
+            color: var(--off-white);
+        }
+
+        .step-description {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: rgba(245, 241, 232, 0.8);
+        }
+
+        /* Gallery Section */
+        .gallery {
+            padding: 8rem 4rem;
+            background: #0f0f0f;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .gallery-item {
+            position: relative;
+            aspect-ratio: 3/4;
+            overflow: hidden;
+            background: var(--warm-gray);
+            cursor: pointer;
+            transition: transform 0.4s ease;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+            z-index: 10;
+        }
+
+        .gallery-item::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, transparent 50%, rgba(26, 26, 26, 0.8));
+            z-index: 1;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .gallery-item:hover::before {
+            opacity: 1;
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 2rem;
+            z-index: 2;
+            transform: translateY(100%);
+            transition: transform 0.4s ease;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+        }
+
+        /* ===== SOLD badge + sold styling ===== */
+        .sold-badge {
+            position: absolute;
+            top: 1.2rem;
+            left: 1.2rem;
+            z-index: 5;
+            padding: 0.55rem 1rem;
+            border: 2px solid #dc2626;
+            background: #dc2626;
+            color: white;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.4rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            font-weight: bold;
+            transform: rotate(-8deg);
+            box-shadow: 0 8px 30px rgba(220, 38, 38, 0.5);
+            pointer-events: none;
+        }
+
+        .in-the-making-badge {
+            position: absolute;
+            top: 1.2rem;
+            left: 1.2rem;
+            z-index: 5;
+            padding: 0.55rem 1rem;
+            border: 2px solid #b87333;
+            background: #b87333;
+            color: white;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.4rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            font-weight: bold;
+            transform: rotate(-8deg);
+            box-shadow: 0 8px 30px rgba(184, 115, 51, 0.5);
+            pointer-events: none;
+        }
+
+        /* Optional: sold look */
+        .gallery-item.sold img {
+            filter: grayscale(0.7) contrast(0.95) brightness(0.85);
+        }
+
+        /* Modal SOLD label */
+        .modal-sold {
+            display: inline-block;
+            margin: 0 0 1.5rem 0;
+            padding: 0.4rem 1rem;
+            border: 2px solid #dc2626;
+            background: #dc2626;
+            color: white;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.2rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(220, 38, 38, 0.4);
+            max-width: calc(100% - 70px);
+        }
+
+        .guitar-model {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.8rem;
+            letter-spacing: 0.05em;
+            color: var(--copper);
+        }
+
+        .guitar-specs {
+            font-size: 0.95rem;
+            color: var(--off-white);
+            margin-top: 0.5rem;
+            opacity: 0.9;
+        }
+
+        /* Placeholder for images */
+        .gallery-item::after {
+            content: attr(data-model);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 3rem;
+            color: rgba(184, 115, 51, 0.2);
+            text-align: center;
+            z-index: 0;
+        }
+
+        /* Contact Section */
+        /* Instagram Section */
+        .instagram {
+            padding: 6rem 0 4rem;
+            background: var(--dark);
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .instagram .section-title {
+            padding: 0 4rem;
+        }
+
+        .instagram-handle {
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.3rem;
+            color: rgba(245, 241, 232, 0.7);
+            margin-bottom: 3rem;
+            padding: 0 4rem;
+        }
+
+        .instagram-widget {
+            max-width: 1200px;
+            margin: 0 auto 3rem;
+            padding: 0 4rem;
+        }
+
+        .instagram-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 1.2rem 3rem;
+            background: transparent;
+            border: 2px solid var(--copper);
+            color: var(--copper);
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.3rem;
+            letter-spacing: 0.15em;
+            text-decoration: none;
+            transition: all 0.4s ease;
+        }
+
+        .instagram-link:hover {
+            background: var(--copper);
+            color: var(--dark);
+        }
+
+        .instagram-link svg {
+            width: 22px;
+            height: 22px;
+            fill: currentColor;
+        }
+
+        .contact {
+            padding: 8rem 4rem;
+            background: var(--charcoal);
+            text-align: center;
+        }
+
+        .contact-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .contact p {
+            font-size: 1.3rem;
+            line-height: 2;
+            margin-bottom: 3rem;
+            color: rgba(245, 241, 232, 0.9);
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1.5rem 4rem;
+            background: transparent;
+            border: 2px solid var(--copper);
+            color: var(--copper);
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.5rem;
+            letter-spacing: 0.15em;
+            text-decoration: none;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: var(--copper);
+            transform: translate(-50%, -50%);
+            transition: width 0.4s ease, height 0.4s ease;
+            z-index: -1;
+            border-radius: 50%;
+        }
+
+        .cta-button:hover {
+            color: var(--charcoal);
+        }
+
+        .cta-button:hover::before {
+            width: 300%;
+            height: 400%;
+        }
+
+        /* Footer */
+        footer {
+            padding: 4rem;
+            background: #0f0f0f;
+            text-align: center;
+            font-size: 0.9rem;
+            color: rgba(245, 241, 232, 0.5);
+            letter-spacing: 0.1em;
+        }
+
+        /* Modal Gallery */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 1;
+        }
+
+        .modal-content {
+            display: flex;
+            max-width: 1800px;
+            width: 98%;
+            height: 98vh;
+            background: var(--charcoal);
+            border: 2px solid var(--copper);
+            position: relative;
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+            overflow: hidden;
+        }
+
+        .modal.active .modal-content {
+            transform: scale(1);
+        }
+
+        .modal-image-container {
+            flex: 1.5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #0f0f0f;
+            padding: 3rem;
+            min-width: 0;
+            position: relative;
+        }
+
+        .modal-image {
+            max-width: 100%;
+            max-height: 100%;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            display: block;
+        }
+
+        .no-photos {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .no-photos p {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2rem;
+            letter-spacing: 0.15em;
+            color: rgba(245, 241, 232, 0.4);
+        }
+
+        .gallery-nav-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 60px;
+            height: 60px;
+            background: rgba(184, 115, 51, 0.3);
+            border: 2px solid var(--copper);
+            color: var(--copper);
+            font-size: 2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+        }
+
+        .gallery-nav-button:hover {
+            background: var(--copper);
+            color: var(--charcoal);
+        }
+
+        .gallery-nav-button.disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+
+        .prev-button {
+            left: 1rem;
+        }
+
+        .next-button {
+            right: 1rem;
+        }
+
+        .image-counter {
+            position: absolute;
+            bottom: 1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(26, 26, 26, 0.8);
+            padding: 0.5rem 1.5rem;
+            border-radius: 20px;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.2rem;
+            letter-spacing: 0.1em;
+            color: var(--copper);
+        }
+
+        .modal-specs {
+            flex: 1;
+            padding: 3rem;
+            overflow-y: auto;
+            background: rgba(26, 26, 26, 0.8);
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Custom scrollbar styling */
+        .modal-specs::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .modal-specs::-webkit-scrollbar-track {
+            background: rgba(26, 26, 26, 0.5);
+        }
+
+        .modal-specs::-webkit-scrollbar-thumb {
+            background: var(--copper);
+            border-radius: 4px;
+        }
+
+        .modal-specs::-webkit-scrollbar-thumb:hover {
+            background: #d4a574;
+        }
+
+        /* Firefox scrollbar */
+        .modal-specs {
+            scrollbar-width: thin;
+            scrollbar-color: var(--copper) rgba(26, 26, 26, 0.5);
+        }
+
+        .modal-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 3rem;
+            letter-spacing: 0.05em;
+            color: var(--copper);
+            margin-bottom: 2rem;
+            border-bottom: 2px solid var(--copper);
+            padding-bottom: 1rem;
+        }
+
+        .spec-section {
+            margin-bottom: 2rem;
+        }
+
+        .spec-section h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.5rem;
+            letter-spacing: 0.05em;
+            color: var(--off-white);
+            margin-bottom: 1rem;
+        }
+
+        .spec-list {
+            list-style: none;
+        }
+
+        .spec-list li {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid rgba(184, 115, 51, 0.2);
+            font-size: 1.1rem;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .spec-list li:last-child {
+            border-bottom: none;
+        }
+
+        .spec-label {
+            color: rgba(245, 241, 232, 0.6);
+            font-weight: 300;
+        }
+
+        .spec-value {
+            color: var(--off-white);
+            text-align: right;
+        }
+
+        .modal-description {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: rgba(245, 241, 232, 0.8);
+            margin-bottom: 2rem;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            background: transparent;
+            border: 2px solid var(--copper);
+            color: var(--copper);
+            font-size: 2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .close-modal:hover {
+            background: var(--copper);
+            color: var(--charcoal);
+            transform: rotate(90deg);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                padding: 1.5rem 2rem;
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .logo {
+                height: 35px;
+            }
+
+            nav ul {
+                gap: 1.5rem;
+                font-size: 0.9rem;
+            }
+
+            .process, .gallery, .contact {
+                padding: 4rem 2rem;
+            }
+
+            .process-grid {
+                gap: 2rem;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-content {
+                flex-direction: column;
+                width: 98%;
+                height: 98vh;
+            }
+
+            .modal-image-container {
+                flex: 1;
+                padding: 2rem 1rem;
+            }
+
+            .modal-specs {
+                flex: 1;
+                padding: 2rem;
+            }
+
+            .modal-title {
+                font-size: 2rem;
+            }
+
+            .close-modal {
+                top: 1rem;
+                right: 1rem;
+                width: 40px;
+                height: 40px;
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <img src="Foto's/Wolf Guitars logo black transparant.png" alt="Wolf Guitars" class="logo">
+        <ul>
+            <li><a href="#process">Craft</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#socials">Socials</a></li>
+            <li><a href="#contact">Commission</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>HANDCRAFTED<br>GUITARS</h1>
+            <p class="hero-subtitle">PRECISION • ARTISTRY • TONE</p>
+            <img src="Foto's/Wolf Guitars logo black transparant.png" alt="Wolf Guitars" class="hero-logo">
+        </div>
+        <div class="scroll-indicator"></div>
+    </section>
+
+    <section class="process" id="process">
+        <h2 class="section-title">The Craft</h2>
+        <div class="process-grid">
+            <div class="process-step">
+                <div class="step-number">01</div>
+                <h3 class="step-title">Design Consultation</h3>
+                <p class="step-description">Every guitar begins with your vision. We discuss tone preferences, playing style, aesthetic desires, and technical specifications to create a blueprint for your dream instrument.</p>
+            </div>
+            <div class="process-step">
+                <div class="step-number">02</div>
+                <h3 class="step-title">Wood Selection</h3>
+                <p class="step-description">Premium tonewoods are hand-selected for their acoustic properties and visual character. From resonant mahogany to figured maple, each piece is chosen to complement your design.</p>
+            </div>
+            <div class="process-step">
+                <div class="step-number">03</div>
+                <h3 class="step-title">Body Construction</h3>
+                <p class="step-description">Precision cutting, shaping, and routing bring the body to life. Every contour is refined for comfort and balance, while maintaining optimal resonance and sustain.</p>
+            </div>
+            <div class="process-step">
+                <div class="step-number">04</div>
+                <h3 class="step-title">Neck & Fretwork</h3>
+                <p class="step-description">The neck is carved to your exact specifications, with frets meticulously leveled, crowned, and polished. This ensures perfect intonation and effortless playability across every position.</p>
+            </div>
+            <div class="process-step">
+                <div class="step-number">05</div>
+                <h3 class="step-title">Finishing</h3>
+                <p class="step-description">Multiple layers of hand-applied finish protect the wood while enhancing its natural beauty. Each coat is cured and buffed to a flawless, professional-grade sheen.</p>
+            </div>
+            <div class="process-step">
+                <div class="step-number">06</div>
+                <h3 class="step-title">Electronics & Setup</h3>
+                <p class="step-description">Premium pickups, hardware, and electronics are installed with precision. The final setup includes action adjustment, intonation, and tone shaping to deliver exceptional performance.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="gallery" id="gallery">
+        <h2 class="section-title">Recent Builds</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item sold" data-model="" onclick="openModal('tele')">
+                <div class="sold-badge">SOLD</div>
+                <img src="Foto's/20260207_173850.jpg" style="width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0;" alt="Custom Telecaster">
+                <div class="gallery-overlay">
+                    <div class="guitar-model">Single-Cut Classic</div>
+                    <div class="guitar-specs">Red Alder Body • Maple Neck • Custom Wound Pickups</div>
+                </div>
+            </div>
+            <div class="gallery-item" data-model="Musicman Stingray 5" onclick="openModal('Musicman_Stingray')">
+                <div class="in-the-making-badge">In the Making</div>
+                <div class="gallery-overlay">
+                    <div class="guitar-model">Musicman Stingray 5</div>
+                    <div class="guitar-specs">Alder Body • Rosewood Fretboard • Single Humbucker Config</div>
+                </div>
+            </div>
+            <div class="gallery-item" data-model="SG STYLE" onclick="openModal('sg')">
+                <div class="in-the-making-badge">In the Making</div>
+                <div class="gallery-overlay">
+                    <div class="guitar-model">SG Style</div>
+                    <div class="guitar-specs">Mahogany Body • Set Neck • Custom Vintage PAF Pickups</div>
+                </div>
+            </div>
+            <div class="gallery-item sold" data-model="Custom Telecaster" onclick="openModal('tele_Lajos')">
+                <div class="sold-badge">Commission Build</div>
+                <div class="gallery-overlay">
+                    <div class="guitar-model">Single-Cut Classic</div>
+                    <div class="guitar-specs">Paulownia Body • Roasted Maple Neck • Custom Wound Pickups</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="instagram" id="socials">
+        <h2 class="section-title">Follow the Build</h2>
+        <p class="instagram-handle">See the process behind every guitar</p>
+        <!-- SnapWidget -->
+        <div class="instagram-widget">
+            <iframe src="https://snapwidget.com/embed/1117699" class="snapwidget-widget" allowtransparency="true" frameborder="0" scrolling="no" style="border:none; overflow:hidden; width:480px; height:160px" title="Posts from Instagram"></iframe>
+        </div>
+        <a href="https://instagram.com/luthierwolf" target="_blank" rel="noopener noreferrer" class="instagram-link">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+            @luthierwolf
+        </a>
+    </section>
+
+    <section class="contact" id="contact">
+        <div class="contact-content">
+            <h2 class="section-title">Commission Your Guitar</h2>
+            <p>Every instrument is built to order with meticulous attention to detail. Lead times typically range from 12-16 weeks, ensuring each guitar receives the care and craftsmanship it deserves.</p>
+            <p>Beyond custom builds, we also offer professional setups, fretwork, refretting, and other repair services to keep your instrument playing its best.</p>
+            <p style="opacity: 0.6; font-size: 1.1rem;">Currently accepting electric guitar projects only — not working on acoustics at this time.</p>
+            <a href="mailto:info@customguitars.com" class="cta-button">Get in Touch</a>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2026 Wolf Guitars • Handcrafted with Passion</p>
+    </footer>
+
+    <!-- Modal -->
+    <div id="guitarModal" class="modal" onclick="closeModal(event)">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <button class="close-modal" onclick="closeModal()">&times;</button>
+            <div class="modal-image-container">
+                <button class="gallery-nav-button prev-button" onclick="previousImage()">‹</button>
+                <img id="modalImage" class="modal-image" src="" alt="Guitar">
+                <button class="gallery-nav-button next-button" onclick="nextImage()">›</button>
+                <div class="image-counter">
+                    <span id="currentImageNumber">1</span> / <span id="totalImages">1</span>
+                </div>
+                <div id="noPhotos" class="no-photos" style="display: none;">
+                    <p>Photos Coming Soon</p>
+                </div>
+            </div>
+            <div class="modal-specs">
+                <div id="modalSoldBadge" class="modal-sold" style="display: none;">SOLD</div>
+                <h2 id="modalTitle" class="modal-title"></h2>
+                <p id="modalDescription" class="modal-description"></p>
+
+                <div class="spec-section">
+                    <h3>Body</h3>
+                    <ul class="spec-list" id="bodySpecs"></ul>
+                </div>
+
+                <div class="spec-section">
+                    <h3>Neck</h3>
+                    <ul class="spec-list" id="neckSpecs"></ul>
+                </div>
+
+                <div class="spec-section">
+                    <h3>Electronics</h3>
+                    <ul class="spec-list" id="electronicsSpecs"></ul>
+                </div>
+
+                <div class="spec-section">
+                    <h3>Hardware</h3>
+                    <ul class="spec-list" id="hardwareSpecs"></ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Guitar data - customize this for each guitar
+        const guitarData = {
+            tele: {
+                title: "Single-Cut Classic",
+                images: [
+                    "Foto's/20260207_173850.jpg",
+                    "Foto's/20260207_174857.jpg",
+                    "Foto's/20260207_175132.jpg",
+                    "Foto's/20260207_175217.jpg",
+                    "Foto's/20260207_175608.jpg",
+                    "Foto's/20260207_175629.jpg",
+                    "Foto's/20260207_180531.jpg",
+                    "Foto's/20260207_180742.jpg",
+                    "Foto's/20260207_180925.jpg",
+                    "Foto's/20260207_181046.jpg",
+                    "Foto's/20260207_181210.jpg"
+                ],
+                sold: true,
+                description: "A modern take on the classic single-cut design. This guitar delivers crisp, articulate tones perfect for country, rock, and everything in between. Built with premium tonewoods and custom-wound pickups for exceptional clarity and sustain.",
+                body: {
+                    "Wood": "American Red Alder",
+                    "Finish": "Seafoam Green, Waterbased High Gloss",
+                    "Weight": "7.2 lbs",
+                    "Contours": "None"
+                },
+                neck: {
+                    "Wood": "Maple",
+                    "Profile": "Modern C",
+                    "Fretboard": "Indian Rosewood",
+                    "Frets": "22 Stewmac Medium/Higher nickel/silver",
+                    "Radius": "7.25\"",
+                    "Scale Length": "25.5\""
+                },
+                electronics: {
+                    "Neck Pickup": "Lajos Tauber Custom Wound Single-Coil",
+                    "Bridge Pickup": "Lajos Tauber Custom Wound Single-Coil",
+                    "Controls": "Reversed Control plate, 1 Volume, 1 Tone",
+                    "Switch": "3-Way Blade"
+                },
+                hardware: {
+                    "Bridge": "StewMac Traditional Threaded 3-Saddle Bridge for Telecaster, Chrome",
+                    "Tuners": "Fender Locking Tuners",
+                    "Finish": "Chrome"
+                }
+            },
+            tele_Lajos: {
+                title: "Single-Cut Classic",
+                images: [
+
+                ],
+                sold: false,
+                commission: true,
+                description: "A modern take on the classic single-cut design. This guitar delivers crisp, articulate tones perfect for country, rock, and everything in between. Built with premium tonewoods and custom-wound pickups for exceptional clarity and sustain.",
+                body: {
+                    "Wood": "Paulownia",
+                    "Finish": "Shell Pink, Nitrocellulose High Gloss, Weathered",
+                    "Weight": "0.0 Kg",
+                    "Contours": "None"
+                },
+                neck: {
+                    "Wood": "Roasted Maple",
+                    "Profile": "Custom",
+                    "Fretboard": "Indian Rosewood",
+                    "Frets": "22 Stewmac Medium/Higher nickel/silver",
+                    "Radius": "7.25\"",
+                    "Scale Length": "25.5\""
+                },
+                electronics: {
+                    "Neck Pickup": "Lajos Tauber Custom Wound Single-Coil",
+                    "Bridge Pickup": "Lajos Tauber Custom Wound Single-Coil",
+                    "Controls": "Reversed Control plate, 1 Volume, 1 Tone",
+                    "Switch": "Slanted 3-Way Blade"
+                },
+                hardware: {
+                    "Bridge": "Lefty bridge, Aged",
+                    "Tuners": "Vintage Kluson-Style",
+                    "Finish": "Aged"
+                }
+            },
+            Musicman_Stingray: {
+                title: "Musicman Stingray 5",
+                images: [],
+                sold: false,
+                inTheMaking: true,
+                description: "A 5-string bass built on the iconic Stingray platform. American Red Alder body in a striking Popping Purple high gloss finish, paired with a slim C maple neck and 33\" scale length. Powered by a custom Lajos Tauber 70's style humbucker for that punchy, growling tone the Stingray is known for.",
+                body: {
+                    "Wood": "American Red Alder",
+                    "Finish": "Popping Purple, Waterbased High Gloss",
+                    "Weight": "7.8 lbs",
+                    "Shape": "Stingray 5"
+                },
+                neck: {
+                    "Wood": "Maple",
+                    "Profile": "Slim C",
+                    "Fretboard": "Maple",
+                    "Frets": "22 Stewmac Medium/Higher nickel/silver",
+                    "Radius": "9.5\"",
+                    "Scale Length": "33\""
+                },
+                electronics: {
+                    "Bridge Pickup": "Lajos Tauber Custom 70's Style Humbucker",
+                    "Neck Pickup": "None",
+                    "Controls": "1 Volume, 1 Tone",
+                    "Switch": "none"
+                },
+                hardware: {
+                    "Bridge": "Gotoh 404BO-5 C Bass Bridge",
+                    "Tuners": "Schaller BM 4L CH",
+                    "Finish": "Nickel"
+                }
+            },
+            sg: {
+                title: "SG Style",
+                images: [],
+                sold: false,
+                inTheMaking: true,
+                description: "A classic double-cut design in full mahogany with a set neck and a vintage '61 profile. Finished in a deep Dragon's Blood with a Gabon Ebony fretboard spanning 24 frets. Loaded with a pair of custom Lajos Tauber PAF-style humbuckers for warm, rich tones with plenty of sustain — perfect for blues, rock, and everything in between.",
+                body: {
+                    "Wood": "Mahogany",
+                    "Finish": "Dragon's Blood",
+                    "Weight": "9.1 lbs"
+                },
+                neck: {
+                    "Wood": "Mahogany",
+                    "Profile": "Vintage '61",
+                    "Fretboard": "Gabon Ebony",
+                    "Frets": "24 Stewmac Medium/Higher nickel/silver",
+                    "Radius": "12\"",
+                    "Scale Length": "24.75\"",
+                    "Construction": "Set Neck"
+                },
+                electronics: {
+                    "Bridge Pickup": "Lajos Tauber Custom PAF-Style Humbucker",
+                    "Neck Pickup": "Lajos Tauber Custom PAF-Style Humbucker",
+                    "Controls": "2 Volume, 2 Tone",
+                    "Switch": "3-Way Toggle"
+                },
+                hardware: {
+                    "Bridge": "Tune-O-Matic w/ Stop Tail",
+                    "Tuners": "Vintage Kluson-Style",
+                    "Finish": "Nickel"
+                }
+            },
+            modern: {
+                title: "Modern Shred",
+                images: ["modern.jpg"],
+                sold: false,
+                description: "Built for speed and aggression. Ultra-fast neck, high-output humbuckers, and modern appointments make this the ultimate shred machine.",
+                body: {
+                    "Wood": "Basswood",
+                    "Finish": "Metallic Black",
+                    "Weight": "6.8 lbs",
+                    "Contours": "Deep Sculpted"
+                },
+                neck: {
+                    "Wood": "Maple",
+                    "Profile": "Flat D (Shred)",
+                    "Fretboard": "Ebony",
+                    "Frets": "24 Jumbo Stainless",
+                    "Radius": "16\"",
+                    "Scale Length": "25.5\""
+                },
+                electronics: {
+                    "Bridge Pickup": "High-Output Humbucker",
+                    "Neck Pickup": "High-Output Humbucker",
+                    "Controls": "1 Volume, 1 Tone, Coil Split",
+                    "Switch": "3-Way Toggle"
+                },
+                hardware: {
+                    "Bridge": "Floyd Rose Tremolo",
+                    "Tuners": "Locking Tuners",
+                    "Finish": "Black Chrome"
+                }
+            },
+            custom: {
+                title: "Custom Design",
+                images: ["custom.jpg"],
+                sold: false,
+                description: "A one-of-a-kind creation featuring exotic tonewoods and active electronics. This guitar pushes boundaries with modern design and cutting-edge features.",
+                body: {
+                    "Wood": "Walnut",
+                    "Finish": "Natural Oil",
+                    "Weight": "8.2 lbs",
+                    "Shape": "Original Design"
+                },
+                neck: {
+                    "Wood": "Wenge",
+                    "Profile": "Modern C",
+                    "Fretboard": "Wenge",
+                    "Frets": "24 Stainless Steel",
+                    "Radius": "14\"",
+                    "Scale Length": "25.5\""
+                },
+                electronics: {
+                    "Bridge Pickup": "Active Humbucker",
+                    "Neck Pickup": "Active Humbucker",
+                    "Controls": "2 Volume, Active EQ",
+                    "Switch": "3-Way + Kill Switch"
+                },
+                hardware: {
+                    "Bridge": "Hardtail Fixed",
+                    "Tuners": "Hipshot Locking",
+                    "Finish": "Matte Black"
+                }
+            },
+            vintage: {
+                title: "Vintage Inspired",
+                images: ["vintage.jpg"],
+                sold: false,
+                description: "Recreating the golden era of guitar building with period-correct details and authentic vintage tone. Perfect for players seeking classic sounds.",
+                body: {
+                    "Wood": "Pine",
+                    "Finish": "Blonde Nitrocellulose",
+                    "Weight": "7.5 lbs",
+                    "Construction": "Traditional"
+                },
+                neck: {
+                    "Wood": "Maple",
+                    "Profile": "Soft V",
+                    "Fretboard": "Maple",
+                    "Frets": "21 Vintage",
+                    "Radius": "7.25\"",
+                    "Scale Length": "25.5\""
+                },
+                electronics: {
+                    "Bridge Pickup": "Vintage Single-Coil",
+                    "Middle Pickup": "Vintage Single-Coil",
+                    "Neck Pickup": "Vintage Single-Coil",
+                    "Controls": "1 Volume, 2 Tone",
+                    "Switch": "5-Way"
+                },
+                hardware: {
+                    "Bridge": "Vintage Tremolo",
+                    "Tuners": "Vintage Kluson",
+                    "Finish": "Nickel"
+                }
+            }
+        };
+
+        let currentGuitarId = null;
+        let currentImageIndex = 0;
+
+        function openModal(guitarId) {
+            const modal = document.getElementById('guitarModal');
+            const data = guitarData[guitarId];
+
+            if (!data) return;
+
+            currentGuitarId = guitarId;
+            currentImageIndex = 0;
+
+            // Show/hide sold, commission, or in the making badge in modal
+            const soldBadge = document.getElementById('modalSoldBadge');
+            if (data.inTheMaking) {
+                soldBadge.textContent = 'IN THE MAKING';
+                soldBadge.style.background = '#b87333';
+                soldBadge.style.borderColor = '#b87333';
+                soldBadge.style.display = 'inline-block';
+            } else if (data.commission) {
+                soldBadge.textContent = 'COMMISSION BUILD';
+                soldBadge.style.background = '#dc2626';
+                soldBadge.style.borderColor = '#dc2626';
+                soldBadge.style.display = 'inline-block';
+            } else if (data.sold) {
+                soldBadge.textContent = 'SOLD';
+                soldBadge.style.background = '#dc2626';
+                soldBadge.style.borderColor = '#dc2626';
+                soldBadge.style.display = 'inline-block';
+            } else {
+                soldBadge.style.display = 'none';
+            }
+
+            // Set title and description
+            document.getElementById('modalTitle').textContent = data.title;
+            document.getElementById('modalDescription').textContent = data.description;
+
+            // Update image and counter
+            updateImage();
+
+            // Populate specs
+            populateSpecs('bodySpecs', data.body);
+            populateSpecs('neckSpecs', data.neck);
+            populateSpecs('electronicsSpecs', data.electronics);
+            populateSpecs('hardwareSpecs', data.hardware);
+
+            // Show modal
+            modal.classList.add('active');
+            document.body.classList.add('modal-open');
+        }
+
+        function updateImage() {
+            const data = guitarData[currentGuitarId];
+            if (!data) return;
+
+            const images = data.images;
+            const totalImages = images.length;
+            const noPhotos = document.getElementById('noPhotos');
+            const modalImage = document.getElementById('modalImage');
+            const counter = document.querySelector('.image-counter');
+
+            if (totalImages === 0) {
+                modalImage.style.display = 'none';
+                counter.style.display = 'none';
+                noPhotos.style.display = 'flex';
+                document.querySelector('.prev-button').style.display = 'none';
+                document.querySelector('.next-button').style.display = 'none';
+                return;
+            }
+
+            modalImage.style.display = 'block';
+            counter.style.display = 'flex';
+            noPhotos.style.display = 'none';
+            document.querySelector('.prev-button').style.display = 'flex';
+            document.querySelector('.next-button').style.display = 'flex';
+
+            // Update image
+            modalImage.src = images[currentImageIndex];
+
+            // Update counter
+            document.getElementById('currentImageNumber').textContent = currentImageIndex + 1;
+            document.getElementById('totalImages').textContent = totalImages;
+
+            // Update button states
+            const prevButton = document.querySelector('.prev-button');
+            const nextButton = document.querySelector('.next-button');
+
+            if (currentImageIndex === 0) {
+                prevButton.classList.add('disabled');
+            } else {
+                prevButton.classList.remove('disabled');
+            }
+
+            if (currentImageIndex === totalImages - 1) {
+                nextButton.classList.add('disabled');
+            } else {
+                nextButton.classList.remove('disabled');
+            }
+        }
+
+        function previousImage() {
+            const data = guitarData[currentGuitarId];
+            if (!data || currentImageIndex === 0) return;
+
+            currentImageIndex--;
+            updateImage();
+        }
+
+        function nextImage() {
+            const data = guitarData[currentGuitarId];
+            if (!data || currentImageIndex === data.images.length - 1) return;
+
+            currentImageIndex++;
+            updateImage();
+        }
+
+        function populateSpecs(elementId, specs) {
+            const container = document.getElementById(elementId);
+            container.innerHTML = '';
+
+            for (const [label, value] of Object.entries(specs)) {
+                const li = document.createElement('li');
+                li.innerHTML = `
+                    <span class="spec-label">${label}</span>
+                    <span class="spec-value">${value}</span>
+                `;
+                container.appendChild(li);
+            }
+        }
+
+        function closeModal(event) {
+            if (!event || event.target.id === 'guitarModal' || event.target.classList.contains('close-modal')) {
+                const modal = document.getElementById('guitarModal');
+                modal.classList.remove('active');
+                document.body.classList.remove('modal-open');
+                currentGuitarId = null;
+                currentImageIndex = 0;
+            }
+        }
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeModal();
+            } else if (event.key === 'ArrowLeft') {
+                previousImage();
+            } else if (event.key === 'ArrowRight') {
+                nextImage();
+            }
+        });
+    </script>
+</body>
+</html>
