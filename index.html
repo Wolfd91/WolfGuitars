@@ -384,6 +384,44 @@
             pointer-events: none;
         }
 
+        .for-sale-badge {
+            position: absolute;
+            top: 1.2rem;
+            left: 1.2rem;
+            z-index: 5;
+            padding: 0.55rem 1rem;
+            border: 2px solid #16a34a;
+            background: #16a34a;
+            color: white;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.4rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            font-weight: bold;
+            transform: rotate(-8deg);
+            box-shadow: 0 8px 30px rgba(22, 163, 74, 0.5);
+            pointer-events: none;
+        }
+
+        .personal-build-badge {
+            position: absolute;
+            top: 1.2rem;
+            left: 1.2rem;
+            z-index: 5;
+            padding: 0.55rem 1rem;
+            border: 2px solid #2563eb;
+            background: #2563eb;
+            color: white;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.4rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            font-weight: bold;
+            transform: rotate(-8deg);
+            box-shadow: 0 8px 30px rgba(37, 99, 235, 0.5);
+            pointer-events: none;
+        }
+
         /* Optional: sold look */
         .gallery-item.sold img {
             filter: grayscale(0.7) contrast(0.95) brightness(0.85);
@@ -918,15 +956,17 @@
                     <div class="guitar-specs">Red Alder Body • Maple Neck • Custom Wound Pickups</div>
                 </div>
             </div>
-            <div class="gallery-item" data-model="Musicman Stingray 5" onclick="openModal('Musicman_Stingray')">
-                <div class="in-the-making-badge">In the Making</div>
+            <div class="gallery-item" data-model="" onclick="openModal('Musicman_Stingray')">
+                <div class="personal-build-badge">Personal Build</div>
+                <img src="Foto's/Stingray 5/20260424_220533.jpg" style="width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0;" alt="Musicman Stingray 5">
                 <div class="gallery-overlay">
                     <div class="guitar-model">Musicman Stingray 5</div>
                     <div class="guitar-specs">Alder Body • Rosewood Fretboard • Single Humbucker Config</div>
                 </div>
             </div>
-            <div class="gallery-item" data-model="SG STYLE" onclick="openModal('sg')">
-                <div class="in-the-making-badge">In the Making</div>
+            <div class="gallery-item" data-model="" onclick="openModal('sg')">
+                <div class="for-sale-badge">For Sale</div>
+                <img src="Foto's/SG style 01/20260424_215648.jpg" style="width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0;" alt="SG Style">
                 <div class="gallery-overlay">
                     <div class="guitar-model">SG Style</div>
                     <div class="guitar-specs">Mahogany Body • Set Neck • Custom Vintage PAF Pickups</div>
@@ -1094,9 +1134,19 @@
             },
             Musicman_Stingray: {
                 title: "Musicman Stingray 5",
-                images: [],
+                images: [
+                    "Foto's/Stingray 5/20260424_220501.jpg",
+                    "Foto's/Stingray 5/20260424_220508.jpg",
+                    "Foto's/Stingray 5/20260424_220533.jpg",
+                    "Foto's/Stingray 5/20260424_220546.jpg",
+                    "Foto's/Stingray 5/20260424_220605.jpg",
+                    "Foto's/Stingray 5/20260424_220637.jpg",
+                    "Foto's/Stingray 5/20260424_220651.jpg",
+                    "Foto's/Stingray 5/20260424_220709.jpg",
+                    "Foto's/Stingray 5/20260424_220744.jpg"
+                ],
                 sold: false,
-                inTheMaking: true,
+                personalBuild: true,
                 description: "A 5-string bass built on the iconic Stingray platform. American Red Alder body in a striking Popping Purple high gloss finish, paired with a slim C maple neck and 33\" scale length. Powered by a custom Lajos Tauber 70's style humbucker for that punchy, growling tone the Stingray is known for.",
                 body: {
                     "Wood": "American Red Alder",
@@ -1126,14 +1176,23 @@
             },
             sg: {
                 title: "SG Style",
-                images: [],
+                images: [
+                    "Foto's/SG style 01/20260424_215648.jpg",
+                    "Foto's/SG style 01/20260424_215750.jpg",
+                    "Foto's/SG style 01/20260424_215821.jpg",
+                    "Foto's/SG style 01/20260424_215921.jpg",
+                    "Foto's/SG style 01/20260424_220039.jpg",
+                    "Foto's/SG style 01/20260424_220103.jpg",
+                    "Foto's/SG style 01/20260424_220131.jpg",
+                    "Foto's/SG style 01/20260424_220239.jpg"
+                ],
                 sold: false,
-                inTheMaking: true,
+                forSale: true,
                 description: "A classic double-cut design in full mahogany with a set neck and a vintage '61 profile. Finished in a deep Dragon's Blood with a Gabon Ebony fretboard spanning 24 frets. Loaded with a pair of custom Lajos Tauber PAF-style humbuckers for warm, rich tones with plenty of sustain — perfect for blues, rock, and everything in between.",
                 body: {
                     "Wood": "Mahogany",
                     "Finish": "Dragon's Blood",
-                    "Weight": "9.1 lbs"
+                    "Weight": "3.2 KG"
                 },
                 neck: {
                     "Wood": "Mahogany",
@@ -1266,7 +1325,17 @@
 
             // Show/hide sold, commission, or in the making badge in modal
             const soldBadge = document.getElementById('modalSoldBadge');
-            if (data.inTheMaking) {
+            if (data.personalBuild) {
+                soldBadge.textContent = 'PERSONAL BUILD';
+                soldBadge.style.background = '#2563eb';
+                soldBadge.style.borderColor = '#2563eb';
+                soldBadge.style.display = 'inline-block';
+            } else if (data.forSale) {
+                soldBadge.textContent = 'FOR SALE';
+                soldBadge.style.background = '#16a34a';
+                soldBadge.style.borderColor = '#16a34a';
+                soldBadge.style.display = 'inline-block';
+            } else if (data.inTheMaking) {
                 soldBadge.textContent = 'IN THE MAKING';
                 soldBadge.style.background = '#b87333';
                 soldBadge.style.borderColor = '#b87333';
