@@ -316,6 +316,11 @@
             z-index: 10;
         }
 
+        /* Crop toward the bottom so the whole body stays visible */
+        .gallery-item img {
+            object-position: center 85%;
+        }
+
         .gallery-item::before {
             content: '';
             position: absolute;
@@ -420,11 +425,6 @@
             transform: rotate(-8deg);
             box-shadow: 0 8px 30px rgba(37, 99, 235, 0.5);
             pointer-events: none;
-        }
-
-        /* Optional: sold look */
-        .gallery-item.sold img {
-            filter: grayscale(0.7) contrast(0.95) brightness(0.85);
         }
 
         /* Modal SOLD label */
@@ -1032,10 +1032,11 @@
                     <div class="guitar-specs">Mahogany Body • Set Neck • Custom Vintage PAF Pickups</div>
                 </div>
             </div>
-            <div class="gallery-item sold" data-model="Custom T-style" onclick="openModal('tele_Lajos')">
+            <div class="gallery-item sold" data-model="" onclick="openModal('tele_Lajos')">
                 <div class="sold-badge">Commission Build</div>
+                <img src="Foto's/T-Style (T-26A02-LT)/20261015_205022.jpg" style="width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0;" alt="T-Style Classic">
                 <div class="gallery-overlay">
-                    <div class="guitar-model">Single-Cut Classic</div>
+                    <div class="guitar-model">T-Style Classic</div>
                     <div class="guitar-specs">Paulownia Body • Roasted Maple Neck • Custom Wound Pickups</div>
                 </div>
             </div>
@@ -1169,37 +1170,51 @@
                 }
             },
             tele_Lajos: {
-                title: "Single-Cut Classic",
+                title: "T-Style Classic",
                 images: [
-
+                    "Foto's/T-Style (T-26A02-LT)/20261015_205022.jpg",
+                    "Foto's/T-Style (T-26A02-LT)/20261015_205219.jpg",
+                    "Foto's/T-Style (T-26A02-LT)/20261015_205321.jpg",
+                    "Foto's/T-Style (T-26A02-LT)/20261015_205408.jpg",
+                    "Foto's/T-Style (T-26A02-LT)/20261015_205707.jpg",
+                    "Foto's/T-Style (T-26A02-LT)/20261015_205821.jpg",
+                    "Foto's/T-Style (T-26A02-LT)/20261015_210008.jpg",
+                    "Foto's/T-Style (T-26A02-LT)/20261015_210145.jpg",
+                    "Foto's/T-Style (T-26A02-LT)/20261015_210337.jpg"
                 ],
                 sold: false,
                 commission: true,
-                description: "A modern take on the classic single-cut design. This guitar delivers crisp, articulate tones perfect for country, rock, and everything in between. Built with premium tonewoods and custom-wound pickups for exceptional clarity and sustain.",
+                description: "This commission build is a classic T-Style with a personal twist. It weighs only 2.6 kg thanks to its Paulownia body, which is finished in Shell Pink nitrocellulose and polished to a high gloss. The flamed maple neck has a custom profile, shaped to fit the player's hand, and a rosewood fretboard. A custom decal on the headstock makes it truly one of a kind. The tone comes from a pair of custom-wound TauberCoils single-coils by Lajos Tauber. They have the snap and twang you'd expect from this classic design, with plenty of warmth on the neck pickup. The control plate is reversed, which keeps the switch out of the way of your playing. It's light, resonant and comfortable to play, made for country, blues, rock and anything in between.",
                 body: {
                     "Wood": "Paulownia",
-                    "Finish": "Shell Pink, Nitrocellulose High Gloss, Weathered",
-                    "Weight": "0.0 Kg",
-                    "Contours": "None"
+                    "Finish": "Shell Pink, Nitrocellulose High Gloss",
+                    "Weight": "2.6 Kg"
+
                 },
                 neck: {
                     "Wood": "Flamed Maple",
-                    "Profile": "Custom",
+                    "Profile": "Custom U-shape",
+                    "Truss Rod": "Dual action truss rod full Titanium",
                     "Fretboard": "Indian Rosewood",
+                    "Nut": "Bone",
+                    "Inlays": "Clay dots & side dots",
                     "Frets": "22 Stewmac Medium/Higher nickel/silver",
-                    "Radius": "12\"",
+                    "Fretboard Radius": "12\"",
                     "Scale Length": "25.5\""
                 },
                 electronics: {
                     "Neck Pickup": "TauberCoils Custom Wound Single-Coil",
                     "Bridge Pickup": "TauberCoils Custom Wound Single-Coil",
-                    "Controls": "Reversed Control plate, 1 Volume, 1 Tone",
+                    "Controls": "1 Volume, 1 Tone",
                     "Switch": "Slanted 3-Way Blade"
                 },
                 hardware: {
-                    "Bridge": "Lefty bridge, Aged",
-                    "Tuners": "Vintage Kluson-Style",
-                    "Finish": "Aged"
+                    "Bridge": "Nickel Lefty bridge",
+                    "Tuners": "Nickel Vintage Kluson-Style",
+                    "Pickguard": "Creme 1-ply no bevel",
+                    "Control Plate": "Reversed with slanted switch",
+                    "Screw Type": "Flatheads"
+
                 }
             },
             Musicman_Stingray: {
